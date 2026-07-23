@@ -1,34 +1,55 @@
-# Bank Customer Churn Risk Intelligence — Streamlit App
+# Bank Customer Churn — Predictive Risk Intelligence
 
-## Setup
+Predicting customer churn for a European retail bank using engineered features,
+gradient boosting / XGBoost models, and SHAP-based explainability, deployed as
+an interactive Streamlit dashboard.
 
-```bash
-cd app
-pip install -r requirements.txt
+## 🚀 Live App
+[Add your deployed Streamlit URL here after deployment]
+
+## 📄 Research Paper
+See [`docs/Research_Paper_Bank_Churn.docx`](docs/Research_Paper_Bank_Churn.docx)
+
+## Project Structure
+
+```
+├── app/
+│   ├── app.py              # Streamlit dashboard (entry point)
+│   └── models/              # Trained models & metadata used by the app
+├── scripts/
+│   ├── 01_eda.py            # Exploratory data analysis
+│   ├── 02_modeling.py       # Model training & comparison
+│   └── 03_explainability.py # SHAP explainability analysis
+├── figures/                 # Generated charts from the analysis
+├── docs/                    # Research paper & executive summary
+├── data/                    # Raw & engineered datasets
+├── requirements.txt
+└── README.md
 ```
 
-## Run
+## Dashboard Features
+
+- **🎯 Risk Calculator** — real-time churn probability for a single customer, with SHAP explanation
+- **📊 Probability Distribution** — portfolio-wide churn risk visualization
+- **🔍 Feature Importance** — global model drivers + SHAP impact analysis
+- **🧪 What-If Simulator** — test retention interventions (e.g. engagement, product count)
+- **📈 Model Performance** — comparison across candidate models
+
+## Run Locally
 
 ```bash
-streamlit run app.py
+git clone <this-repo-url>
+cd bank-churn-prediction
+pip install -r requirements.txt
+streamlit run app/app.py
 ```
 
 The app will open at http://localhost:8501
 
-## Contents
+## Model
 
-- `app.py` — main Streamlit application (5 modules: Risk Calculator, Probability
-  Distribution, Feature Importance Dashboard, What-If Simulator, Model Performance)
-- `models/` — trained models (Gradient Boosting, XGBoost, Logistic Regression),
-  scaler, feature metadata, SHAP importances, and a reference training set used
-  for portfolio-level visualizations
-- `data/` — engineered dataset snapshot
+- **Production model:** Gradient Boosting (best ROC-AUC on held-out test data)
+- **Explainability model:** XGBoost + SHAP TreeExplainer
+- Full training/evaluation pipeline in `scripts/02_modeling.py`
 
-## Notes
 
-- The production model is **Gradient Boosting** (ROC-AUC 0.869 on held-out test data).
-- SHAP explanations use the XGBoost model (TreeExplainer) for per-customer
-  interpretability in the Risk Calculator.
-- All customer-level predictions are computed live from the raw inputs using the
-  same feature-engineering logic as the training pipeline (see `engineer_features()`
-  in `app.py`).
