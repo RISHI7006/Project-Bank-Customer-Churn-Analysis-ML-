@@ -7,8 +7,7 @@ an interactive Streamlit dashboard.
 ## 🚀 Live App
 [Add your deployed Streamlit URL here after deployment]
 
-## 📄 Research Paper
-See [`docs/Research_Paper_Bank_Churn.docx`](docs/Research_Paper_Bank_Churn.docx)
+
 
 ## Project Structure
 
