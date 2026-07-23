@@ -1,8 +1,0 @@
-streamlit>=1.60,<2.0
-pandas>=2.0
-numpy>=1.26
-scikit-learn>=1.5
-xgboost>=2.0
-plotly>=5.20
-shap>=0.45
-joblib>=1.3
